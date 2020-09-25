@@ -85,5 +85,17 @@ public class PersonFacadeTest {
         assertEquals(2, personsDTO.getAll().size(), "2");
     }
     
+    @Test
+    public void testGetEditPerson() throws PersonNotFoundException {
+        PersonDTO person = new PersonDTO(p1.getId(), "Kim", "Svend", "90909090", "Danmarksgade", "Aalborg", 9000);
+        assertEquals(person.getfName(), facade.editPerson(person).getfName(), "Kim");
+    }
+    
+    @Test
+    public void testGetAddPerson() throws PersonNotFoundException {
+          assertEquals("Svendning", facade.addPerson("Svendning", "Bob", "10293029", "Derovre", "Ingen steder", 00000).getfName(), "Svendning");
+    }
+    
+    
 
 }
