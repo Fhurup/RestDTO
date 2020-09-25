@@ -82,6 +82,7 @@ public class PersonFacade implements IPersonFacade {
         
         try {
             em.getTransaction().begin();
+            em.remove(person.getAddress());
             em.remove(person);
             em.getTransaction().commit();
             PersonDTO pDTO = new PersonDTO(person);
@@ -136,6 +137,9 @@ public class PersonFacade implements IPersonFacade {
             person.setFname(p.getfName());
             person.setLname(p.getlName());
             person.setPhone(p.getPhone());
+            person.getAddress().setStreet(p.getStreet());
+            person.getAddress().setCity(p.getCity());
+            person.getAddress().setZip(p.getZip());
             em.getTransaction().commit();
             PersonDTO personDTO = new PersonDTO(person);
             return personDTO;

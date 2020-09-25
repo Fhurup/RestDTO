@@ -7,6 +7,7 @@ package dto;
 
 import entities.Address;
 import entities.Person;
+import java.util.Objects;
 
 /**
  *
@@ -23,10 +24,10 @@ public class PersonDTO {
     private int zip;
     
     public PersonDTO(Person p) {
+        this.id = p.getId();
         this.fName = p.getFname();
         this.lName = p.getLname();
         this.phone = p.getPhone();
-        this.id = p.getId();
         this.street = p.getAddress().getStreet();
         this.city = p.getAddress().getCity();
         this.zip = p.getAddress().getZip();
@@ -74,6 +75,48 @@ public class PersonDTO {
 
     public long getId() {
         return id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PersonDTO other = (PersonDTO) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.zip != other.zip) {
+            return false;
+        }
+        if (!Objects.equals(this.fName, other.fName)) {
+            return false;
+        }
+        if (!Objects.equals(this.lName, other.lName)) {
+            return false;
+        }
+        if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.street, other.street)) {
+            return false;
+        }
+        if (!Objects.equals(this.city, other.city)) {
+            return false;
+        }
+        return true;
     }
 
     public void setId(long id) {
