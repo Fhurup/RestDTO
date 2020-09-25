@@ -51,7 +51,7 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response savePerson(String person){
         PersonDTO personDTO = GSON.fromJson(person, PersonDTO.class);
-        PersonDTO p = FACADE.addPerson(personDTO.getfName(), personDTO.getlName(), personDTO.getPhone());
+        PersonDTO p = FACADE.addPerson(personDTO.getfName(), personDTO.getlName(), personDTO.getPhone(), personDTO.getStreet(), personDTO.getCity(),personDTO.getZip());
         return Response.ok(p).build();
         
     }
