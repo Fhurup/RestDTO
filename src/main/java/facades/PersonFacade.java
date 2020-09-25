@@ -74,7 +74,7 @@ public class PersonFacade implements IPersonFacade {
         Person person = em.find(Person.class, ID);
         
         if (person == null) {
-            throw new PersonNotFoundException("Could not delete, provided id does not exist");
+            throw new PersonNotFoundException("Could not delete, provided id does not exist, hallo");
         }
         
         try {
